@@ -1,0 +1,159 @@
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname MLS
+!
+!
+!
+ip dhcp excluded-address 192.168.10.254
+ip dhcp excluded-address 192.168.20.254
+ip dhcp excluded-address 192.168.30.254
+!
+ip dhcp pool vlan10
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.254
+ip dhcp pool vlan20
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.254
+ domain-name wr
+ip dhcp pool vlan30
+ network 192.168.30.0 255.255.255.0
+ default-router 192.168.30.254
+ domain-name wr
+!
+!
+ip routing
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+ switchport trunk native vlan 99
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet0/2
+ no switchport
+ ip address 209.165.200.225 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ description vlan 10 swtich virtual interface
+ mac-address 0002.16a2.cb01
+ ip address 192.168.10.254 255.255.255.0
+!
+interface Vlan20
+ description vlan 20 swtich virtual interface
+ mac-address 0002.16a2.cb02
+ ip address 192.168.20.254 255.255.255.0
+!
+interface Vlan30
+ description vlan 30 swtich virtual interface
+ mac-address 0002.16a2.cb03
+ ip address 192.168.30.254 255.255.255.0
+!
+interface Vlan99
+ description vlan 99 swtich virtual interface
+ mac-address 0002.16a2.cb04
+ ip address 192.168.99.254 255.255.255.0
+!
+ip classless
+!
+ip flow-export version 9
+!
+ipv6 route ::/0 GigabitEthernet0/2 2001:DB8:ACAD:A::2
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+!
+end
+
